@@ -21,7 +21,7 @@ required.add_argument('-o', '--oauth',
                           required=True)
 args = parser.parse_args()
 
-conn = sqlite3.connect('/home/pi/mydatabase.db');
+conn = sqlite3.connect('/home/pi/ServerProgram/mydatabase.db');
 
 print("Opened the database sucessfully");
 
