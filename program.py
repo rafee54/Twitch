@@ -1,11 +1,13 @@
-from __future__ import print_function
+#!twitch-project/bin/python
+
+## from __future__ import print_function        This is for python 2 compatibility, not needed due to virtual environment.
 from twitchstream.outputvideo import TwitchOutputStreamRepeater
 from twitchstream.chat import TwitchChatStream
 import sqlite3
 import random
-import twitch
-import time
-import socket
+import twitch     #                             Is this necessary?
+import time.sleep #                             Only import what is necessary, loading full libraries is bad practice
+# import socket                                 Unnecessary import as it is not used
 import argparse
 import numpy as np
 
@@ -21,7 +23,7 @@ required.add_argument('-o', '--oauth',
                           required=True)
 args = parser.parse_args()
 
-conn = sqlite3.connect('/home/pi/ServerProgram/mydatabase.db');
+conn = sqlite3.connect('./mydatabase.db'); # Relative file name so does not depend on directory name
 
 print("Opened the database sucessfully");
 
@@ -36,7 +38,7 @@ randomRecord = str((random.randint(1, number)));
 #VVV Finds the random record and returns it
 
 cursor = conn.execute("SELECT question, a, b FROM questions WHERE id = ?", (randomRecord))
-for row in cursor: 
+for row in cursor:
   DisplayQuestion = row[0];
   OptionOne = row[1];
   OptionTwo = row[2];
