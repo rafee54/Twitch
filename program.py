@@ -1,11 +1,13 @@
-from __future__ import print_function
+#!twitch-project/bin/python
+
+## from __future__ import print_function     This is for python 2 compatibility
 from twitchstream.outputvideo import TwitchOutputStreamRepeater
 from twitchstream.chat import TwitchChatStream
 import sqlite3
 import random
 import twitch
 import time
-import socket
+# import socket unnecessary
 import argparse
 import numpy as np
 
@@ -36,7 +38,7 @@ randomRecord = str((random.randint(1, number)));
 #VVV Finds the random record and returns it
 
 cursor = conn.execute("SELECT question, a, b FROM questions WHERE id = ?", (randomRecord))
-for row in cursor: 
+for row in cursor:
   DisplayQuestion = row[0];
   OptionOne = row[1];
   OptionTwo = row[2];
