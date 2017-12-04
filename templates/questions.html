@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+<head>
+  <!-- basic.html -->
+  <title>questions</title>
+</head>
+<body>
+  <h1>List of questions</h1>
+  <table border = 1>
+         <thead>
+            <td>id</td>
+            <td>Question</td>
+            <td>Option A</td>
+            <td>Option B</td>
+         </thead>
+         
+         {% for row in rows %}
+            <tr>
+               <td>{{row["id"]}}</td>
+               <td>{{row["question"]}}</td>
+               <td> {{ row["optionA"]}}</td>
+               <td>{{row["optionB"]}}</td>	
+            </tr>
+         {% endfor %}
+      </table>
+</body>
+</html>

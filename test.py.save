@@ -1,0 +1,8 @@
+from twitchstream.chat import TwitchChatStream
+
+chatstream = TwitchChatStream(
+            username='wwyrd',  # Must provide a lowercase username.
+            oauth='oauth:uqqptcbtsrs84b4tambjj22eub95di',
+            verbose=False
+
+)

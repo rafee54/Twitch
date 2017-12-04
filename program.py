@@ -6,7 +6,7 @@ from twitchstream.chat import TwitchChatStream
 import sqlite3
 import random
 import twitch     #                             Is this necessary?
-import time.sleep #                             Only import what is necessary, loading full libraries is bad practice
+import time #                             Only import what is necessary, loading full libraries is bad practice
 # import socket                                 Unnecessary import as it is not used
 import argparse
 import numpy as np
@@ -46,7 +46,7 @@ print(DisplayQuestion, OptionOne, OptionTwo);
 chatmessage = ("Voting has opened. Type A to vote for %s. Type B to vote for %s." % (OptionOne, OptionTwo))
 with TwitchChatStream(username=args.username,
 	                  oauth=args.oauth,
-	                  verbose=False) as chatstream:
+	                  verbose=True) as chatstream:
 	chatstream.send_chat_message(chatmessage)
 
 scoreA = 0;
@@ -57,12 +57,13 @@ while timer > 0:
   time.sleep(1)
   received = chatstream.twitch_receive_messages();
   if received:
-    d=received[0];
-    #print(d["message"]);
-    if d["message"] == "a" or d["message"] == "A":
-      scoreA+=1;
-    if d["message"] == "b" or d["message"] == "B":
-      scoreB+=1;
+   for chat_message in received:
+    	d=received[0];
+    	print(d["message"]);
+    	if d["message"] == "a" or d["message"] == "A":
+      		scoreA+=1;
+    	if d["message"] == "b" or d["message"] == "B":
+      		scoreB+=1;
   timer-=1;
   print(timer)
 
@@ -70,11 +71,14 @@ print("Score A: ", scoreA);
 print("Score B: ", scoreB);
 
 if scoreA == scoreB:
+  chatstream.send_chat_message("Equal scores") 
   print("equal scores")
 elif scoreA > scoreB:
   print("Option A wins")
+  chatstream.send_chat_message("Option A wins")
 elif scoreA < scoreB:
   print("Option B wins")
+  chatstream.send_chat_message("Option B wins")
 
 cursor = conn.execute("UPDATE questions SET aResult=?, bResult=? WHERE id=?",(str(scoreA),str(scoreB), randomRecord))
 conn.commit()

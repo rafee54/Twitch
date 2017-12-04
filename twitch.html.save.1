@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        $.getJSON("http://10.240.211.221:5000/questions/1", function(result){
+          var question = result.questions.id;
+          console.log(question)
+          $(".question").text(question.question);
+          $(".optionA").text(question.a);
+          $(".optionB").text(question.b);
+        });
+      });
+    });
+
+
+    </script>
+  </head>
+  <body>
+
+    <button>Get JSON data</button>
+
+    <h1 class="question"></h1>
+
+    <div class="optionA"></div>
+
+    <div class="optionB"></div>
+
+  </body>
+</html>

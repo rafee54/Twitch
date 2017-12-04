@@ -1,23 +1,67 @@
 <!DOCTYPE html>
 <html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $.getJSON("http://10.240.211.221:5000/questions/1", function(result){
-            return(result)
-            });
+  <head>
+    <style>
+	optionA {
+	float:left;
+		}
+    </style>  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){	
+	$.getJSON("http://192.168.0.23:5000/questions", function(result){
+	  var questionA = result.id;
+	  var randomID = Math.floor((Math.random() * questionA.length) + 1);
+	  var jsonURL = "http://192.168.0.23:5000/questions/" + randomID.toString();
+          $.getJSON(jsonURL, function(resultA){
+	    var questionB = resultA.id[0];	
+	    $(".question").text(questionB.question);
+            $(".optionA").text(questionB.a);
+            $(".optionB").text(questionB.b);
+		});       
+	  $.getJSON("http://192.168.0.23:5000/voting/" + randomID.toString(), function(resultC){ 
+		  $(".resultA").text(resultC.OptionA)
+		  $(".resultB").text(resultC.OptionB)
+			});
+          var start = new Date;
+	  var CountdownFrom;
+	  var interval = setInterval(function() {
+    	   CountdownFrom = Math.floor(12 + ((start - new Date) / 1000))
+	   $('.timer').text(CountdownFrom + " Seconds");
+	   if (CountdownFrom == 0) {
+		clearInterval(interval)
+		$('.timer').text("Voting finished.")
+		
+		}	
+	     }, 1000);
+	  	
+	  });
+	
     });
-});
-</script>
-</head>
-<body>
 
-<button>Get JSON data</button>
 
-<div></div>
+    </script>
+  </head>
+  <body>
 
-</body>
+    
+    <h1 class="question"></h1>
+
+    <div class="timer"></div>
+
+    <div class="optionA"></div>
+
+    <div class="optionB"></div>
+
+    <div class="resultA"></div>
+
+    <div class="resultB"></div>
+
+
+  </body>
 </html>
+
+
+
 

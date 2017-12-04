@@ -48,7 +48,7 @@ class Twitch:
         return {
             'channel': re.findall(r'^:.+\![a-zA-Z0-9_]+@[a-zA-Z0-9_]+.+ PRIVMSG (.*?) :', data)[0],
             'username': re.findall(r'^:([a-zA-Z0-9_]+)\!', data)[0],
-            'message': re.findall(r'PRIVMSG #[a-zA-Z0-9_]+ :(.+)', data)[0].decode('utf8')
+            'message': re.findall(r'PRIVMSG [a-zA-Z0-9_]+ :(.+)', data)[0].decode('utf8')
         }
  
     def twitch_recieve_messages(self, amount=1024):
