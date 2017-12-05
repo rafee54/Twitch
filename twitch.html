@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-	optionA {
-	float:left;
-		}
-    </style>  
-
+   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
+   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-    $(document).ready(function(){	
+		var votesA;
+		var votesB;
+		var winner;	 
+	$(document).ready(function(){	
 	$.getJSON("http://192.168.0.23:5000/questions", function(result){
 	  var questionA = result.id;
 	  var randomID = Math.floor((Math.random() * questionA.length) + 1);
@@ -17,21 +16,42 @@
           $.getJSON(jsonURL, function(resultA){
 	    var questionB = resultA.id[0];	
 	    $(".question").text(questionB.question);
-            $(".optionA").text(questionB.a);
-            $(".optionB").text(questionB.b);
+            $(".wordA").text(questionB.a);
+            $(".wordB").text(questionB.b);
 		});       
 	  $.getJSON("http://192.168.0.23:5000/voting/" + randomID.toString(), function(resultC){ 
-		  $(".resultA").text(resultC.OptionA)
-		  $(".resultB").text(resultC.OptionB)
+		  votesA = resultC.OptionA
+		  votesB = resultC.OptionB
+		  $(".resultA").text(resultC.OptionA + " votes")
+		  $(".resultB").text(resultC.OptionB + " votes")
 			});
           var start = new Date;
 	  var CountdownFrom;
 	  var interval = setInterval(function() {
     	   CountdownFrom = Math.floor(12 + ((start - new Date) / 1000))
-	   $('.timer').text(CountdownFrom + " Seconds");
+	   $('.timer').text(CountdownFrom + " seconds left...");
 	   if (CountdownFrom == 0) {
 		clearInterval(interval)
 		$('.timer').text("Voting finished.")
+		   if (votesA > votesB) {
+		   $('.resultText').text("Option A wins!")
+		   } 
+		   if (votesA < votesB) {
+		   $('.resultText').text("Option B wins!")
+		   } 
+		   if (votesA == votesB) {
+		   $('.resultText').text("It's a tie!")
+		   }      
+		   $('.resultText').animate({
+        opacity: '1.0'			   
+    	   });
+	   	   $('.headerA').animate({
+    	opacity: '0.0'			   
+		   });
+	   	   $('.headerB').animate({
+    	opacity: '0.0'			   
+		   });
+		
 		
 		}	
 	     }, 1000);
@@ -43,23 +63,24 @@
 
     </script>
   </head>
-  <body>
+	<body>
+	    <h1 class="question">THIS IS THE QUESTION</h1>
 
-    
-    <h1 class="question"></h1>
-
-    <div class="timer"></div>
-
-    <div class="optionA"></div>
-
-    <div class="optionB"></div>
-
-    <div class="resultA"></div>
-
-    <div class="resultB"></div>
-
-
-  </body>
+	    <div class="timer">60 seconds left</div>
+         <div class="Section">
+	    <div class="optionA">
+		  <h1 class="headerA">Type A in chat to vote!</h1>
+	      <div class="wordA">Option A</div>
+		  <div class="resultA"></div>		
+	    </div>
+	    <div class="optionB">	
+  		  <h1 class="headerA">Type B in chat to vote!</h1>
+		  <div class="wordB">Option B</div>
+		  <div class="resultB"></div>	
+	    </div>
+	</div>
+		<div class="resultText"></div>
+	</body>
 </html>
 
 
