@@ -1,0 +1,50 @@
+div.optionA{
+	width: 25%;
+	float: left;
+	text-align: center;
+	font-size: 50px;
+	padding-left: 100px;
+	padding-top: 25px;
+}
+
+h1.headerA{
+	animation: float 3s ease-out infinite;
+	font-size: 35px;
+}
+
+@keyframes float {
+  50% {
+     transform: translate(0, 20px);
+  }
+}
+
+
+div.optionB{
+	width: 25%;
+	float: right;
+	text-align: center;
+	font-size: 50px;
+	padding-right: 100px;
+	padding-top: 25px;
+}
+
+div.timer{
+	text-align: center;
+	font-size: 60px;
+}
+h1 {
+	text-align: center;
+	font-size: 70px;
+	
+}
+
+div.resultText {
+	opacity: 0;
+	text-align: center;
+	font-size: 50px;
+}
+
+body {
+	background-color: floralwhite;
+	font-family: 'Ubuntu', sans-serif;
+}
