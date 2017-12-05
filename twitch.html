@@ -28,9 +28,9 @@
           var start = new Date;
 	  var CountdownFrom;
 	  var interval = setInterval(function() {
-    	   CountdownFrom = Math.floor(12 + ((start - new Date) / 1000))
+    	   CountdownFrom = Math.floor(65 + ((start - new Date) / 1000))
 	   $('.timer').text(CountdownFrom + " seconds left...");
-	   if (CountdownFrom == 0) {
+	   if (CountdownFrom == 0 || CountdownFrom < 0) {
 		clearInterval(interval)
 		$('.timer').text("Voting finished.")
 		   if (votesA > votesB) {
@@ -51,6 +51,9 @@
 	   	   $('.headerB').animate({
     	opacity: '0.0'			   
 		   });
+		   setTimeout(function(){
+	  location.reload();
+	  }, 5000);
 		
 		
 		}	
