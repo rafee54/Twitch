@@ -1,36 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
-  <head>
-   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
-   <link rel="stylesheet" href="style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-		var votesA;
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="style.css" type="text/css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript">
+</script>
+		<script type="text/javascript">
+var votesA;
 		var votesB;
-		var winner;	 
-	$(document).ready(function(){	
-	$.getJSON("http://192.168.0.23:5000/questions", function(result){
-	  var questionA = result.id;
-	  var randomID = Math.floor((Math.random() * questionA.length) + 1);
-	  var jsonURL = "http://192.168.0.23:5000/questions/" + randomID.toString();
-          $.getJSON(jsonURL, function(resultA){
-	    var questionB = resultA.id[0];	
-	    $(".question").text(questionB.question);
-            $(".wordA").text(questionB.a);
-            $(".wordB").text(questionB.b);
+		var winner;  
+		$(document).ready(function(){   
+		$.getJSON("http://192.168.0.23:5000/questions", function(result){
+		var questionA = result.id;
+		var randomID = Math.floor((Math.random() * questionA.length) + 1);
+		var jsonURL = "http://192.168.0.23:5000/questions/" + randomID.toString();
+		  $.getJSON(jsonURL, function(resultA){
+		var questionB = resultA.id[0];  
+		$(".question").text(questionB.question);
+			$(".wordA").text(questionB.a);
+			$(".wordB").text(questionB.b);
 		});       
-	  $.getJSON("http://192.168.0.23:5000/voting/" + randomID.toString(), function(resultC){ 
+		$.getJSON("http://192.168.0.23:5000/voting/" + randomID.toString(), function(resultC){ 
 		  votesA = resultC.OptionA
 		  votesB = resultC.OptionB
 		  $(".resultA").text(resultC.OptionA + " votes")
 		  $(".resultB").text(resultC.OptionB + " votes")
 			});
-          var start = new Date;
-	  var CountdownFrom;
-	  var interval = setInterval(function() {
-    	   CountdownFrom = Math.floor(62 + ((start - new Date) / 1000))
-	   $('.timer').text(CountdownFrom + " seconds left...");
-	   if (CountdownFrom == 0 || CountdownFrom < 0) {
+		  var start = new Date;
+		var CountdownFrom;
+		var interval = setInterval(function() {
+		   CountdownFrom = Math.floor(62 + ((start - new Date) / 1000))
+		$('.timer').text(CountdownFrom + " seconds left...");
+		if (CountdownFrom == 0 || CountdownFrom < 0) {
 		clearInterval(interval)
 		$('.timer').text("Voting finished.")
 		   if (votesA > votesB) {
@@ -43,49 +44,60 @@
 		   $('.resultText').text("It's a tie!")
 		   }      
 		   $('.resultText').animate({
-        opacity: '1.0'			   
-    	   });
-	   	   $('.headerA').animate({
-    	opacity: '0.0'			   
+		opacity: '1.0'             
 		   });
-	   	   $('.headerB').animate({
-    	opacity: '0.0'			   
+		   $('.headerA').animate({
+		opacity: '0.0'             
+		   });
+		   $('.headerB').animate({
+		opacity: '0.0'             
 		   });
 		   setTimeout(function(){
-	  location.reload();
-	  }, 5000);
-		
-		
-		}	
-	     }, 1000);
-	  	
-	  });
-	
-    });
+		location.reload();
+		}, 5000);
 
 
-    </script>
-  </head>
+		}   
+		 }, 1000);
+
+		});
+
+		});
+
+
+		</script>
+		<title></title>
+	</head>
 	<body>
-	    <h1 class="question">THIS IS THE QUESTION</h1>
-
-	    <div class="timer">60 seconds left</div>
-         <div class="Section">
-	    <div class="optionA">
-		  <h1 class="headerA">Type A in chat to vote!</h1>
-	      <div class="wordA">Option A</div>
-		  <div class="resultA"></div>		
-	    </div>
-	    <div class="optionB">	
-  		  <h1 class="headerA">Type B in chat to vote!</h1>
-		  <div class="wordB">Option B</div>
-		  <div class="resultB"></div>	
-	    </div>
-	</div>
-		<div class="resultText"></div>
+		<h1 class="question">
+			THIS IS THE QUESTION
+		</h1>
+		<div class="timer">
+			60 seconds left
+		</div>
+			<div class="section">
+			
+			<div class="optionA">
+				<h1 class="headerA">
+					Type A in chat to vote!
+				</h1>
+				<p class="wordA">
+					Option A
+				</p>
+				<div class="resultA"></div>
+			</div>
+			<div class="optionB">
+				<h1 class="headerA">
+					Type B in chat to vote!
+				</h1>
+				<p class="wordB">
+					Option B
+				</p>
+				<div class="resultB"></div>
+			</div>
+			
+			<div class="resultText">OPTION A WON</div>
+			
+			</div>
 	</body>
 </html>
-
-
-
-
