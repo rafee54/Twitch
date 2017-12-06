@@ -28,7 +28,7 @@
           var start = new Date;
 	  var CountdownFrom;
 	  var interval = setInterval(function() {
-    	   CountdownFrom = Math.floor(65 + ((start - new Date) / 1000))
+    	   CountdownFrom = Math.floor(62 + ((start - new Date) / 1000))
 	   $('.timer').text(CountdownFrom + " seconds left...");
 	   if (CountdownFrom == 0 || CountdownFrom < 0) {
 		clearInterval(interval)

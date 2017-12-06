@@ -48,9 +48,9 @@ def voting(number):
       OptionTwo = row[2];
     scoreA = 0;
     scoreB = 0;
-    with TwitchChatStream(username='wwyrd',oauth='oauth:v1exdo5jw9hmqrbozduymby6opyn6w',verbose=True) as chatstream:
+    with TwitchChatStream(username='wwyrd',oauth='oauth:v1exdo5jw9hmqrbozduymby6opyn6w',verbose=False) as chatstream:
 	chatstream.send_chat_message('Voting is open!')
-	timer = 10
+	timer = 60
 	while timer > 0:
 	    time.sleep(1)
             received = chatstream.twitch_receive_messages()
