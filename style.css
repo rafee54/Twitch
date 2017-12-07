@@ -1,63 +1,13 @@
-div.optionA {
-	width: 25%;
-	float: right;
-	text-align: center;
-	font-size: 50px;
-	background-color: #EA4D63;
-	position: relative;
-	left: -50%;
-	border-style: solid;
-	border-top-left-radius: 25px;
-	border-bottom-left-radius: 25px;
-	
-}
-
-div.optionB {
-	width: 25%;
-	float: right;
-	text-align: center;
-	font-size: 50px;
-	background-color:#2BA9E5;
-	border-style: solid;
-	border-top-right-radius: 25px;
-	border-bottom-right-radius: 25px;
-}
-
-h1.headerA {
+div.Prompts {
 	animation: float 3s ease-out infinite;
-	font-size: 35px;
-}
-
-h1.headerB {
-	animation: float 3s ease-out infinite;
-	font-size: 35px;
 }
 
 @keyframes float {
 	50% {
-		transform: translate(0, 20px);
+		transform: scale(1.02);
 	}
 
 }
-
-
-
-div.timer {
-}
-h1 {
-	text-align: center;
-	font-size: 70px;
-}
-
-div.resultText {
-	opacity: 1;
-	text-align:center;
-	font-size: 50px;
-	position: relative;
-	padding:20%;	
-}
-
-
 
 body {
 	background-color: floralwhite;
