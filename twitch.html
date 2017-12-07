@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
+<<<<<<< HEAD
 	<head>
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="style.css" type="text/css">
@@ -7,6 +8,15 @@
 </script>
 		<script type="text/javascript">
 var votesA;
+=======
+  <head>
+   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
+   <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="cntdwn/dist/jquery.countdown360.min.js"></script>
+    <script>
+		var votesA;
+>>>>>>> e22589a26928c1382fa6fed587ed114e9465999c
 		var votesB;
 		var winner;  
 		$(document).ready(function(){   
@@ -26,12 +36,54 @@ var votesA;
 		  $(".resultA").text(resultC.OptionA + " votes")
 		  $(".resultB").text(resultC.OptionB + " votes")
 			});
+<<<<<<< HEAD
 		  var start = new Date;
 		var CountdownFrom;
 		var interval = setInterval(function() {
 		   CountdownFrom = Math.floor(62 + ((start - new Date) / 1000))
 		$('.timer').text(CountdownFrom + " seconds left...");
 		if (CountdownFrom == 0 || CountdownFrom < 0) {
+=======
+          var start = new Date;
+	  var CountdownFrom;
+	  var countdown = $("#timer").countdown360({
+		radius: 60,
+		seconds: 20,
+		label: ['sec', 'secs'],
+		fontColor: '#FFFFFF',
+		autostart: true,
+		onComplete: function () {
+      if (votesA > votesB) {
+		   $('.resultText').text("Option A wins!")
+		   } 
+		   if (votesA < votesB) {
+		   $('.resultText').text("Option B wins!")
+		   } 
+		   if (votesA == votesB) {
+		   $('.resultText').text("It's a tie!")
+		   }      
+		   $('.resultText').animate({
+        opacity: '1.0'			   
+    	   });
+	   	   $('.headerA').animate({
+    	opacity: '0.0'			   
+		   });
+	   	   $('.headerB').animate({
+    	opacity: '0.0'			   
+		   });
+		   setTimeout(function(){
+	  location.reload();
+	  }, 5000);
+    }
+	  });
+	  
+	  
+	  
+	  /* var interval = setInterval(function() {
+    	   CountdownFrom = Math.floor(62 + ((start - new Date) / 1000))
+	   $('.timer').text(CountdownFrom + " seconds left...");
+	   if (CountdownFrom == 0 || CountdownFrom < 0) {
+>>>>>>> e22589a26928c1382fa6fed587ed114e9465999c
 		clearInterval(interval)
 		$('.timer').text("Voting finished.")
 		   if (votesA > votesB) {
@@ -53,12 +105,45 @@ var votesA;
 		opacity: '0.0'             
 		   });
 		   setTimeout(function(){
+<<<<<<< HEAD
 		location.reload();
 		}, 5000);
+=======
+	  location.reload();
+	  }, 5000);
+		
+		
+		}	
+	     }, 1000); */
+	  	
+	  });
+	
+    });
+
+>>>>>>> e22589a26928c1382fa6fed587ed114e9465999c
 
 
+<<<<<<< HEAD
 		}   
 		 }, 1000);
+=======
+	    <div class="timer"></div>
+         <div class="Section">
+	    <div class="optionA">
+		  <h1 class="headerA">Type A in chat to vote!</h1>
+	      <div class="wordA">Option A</div>
+		  <div class="resultA"></div>		
+	    </div>
+	    <div class="optionB">	
+  		  <h1 class="headerA">Type B in chat to vote!</h1>
+		  <div class="wordB">Option B</div>
+		  <div class="resultB"></div>	
+	    </div>
+	</div>
+		<div class="resultText"></div>
+	</body>
+</html>
+>>>>>>> e22589a26928c1382fa6fed587ed114e9465999c
 
 		});
 
