@@ -2,12 +2,18 @@
 <html>
   <head>
    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
    <link rel="stylesheet" href="style.css">
+   <style>
+   html, body, h1, h2, h3, h4, h5, h6 {
+     font-family: 'Ubuntu', sans-serif;
+   }
+   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
 		var votesA;
 		var votesB;
-		var winner;  
+		var winner;
 		$(document).ready(function(){   
 		$.getJSON("http://192.168.0.23:5000/questions", function(result){
 		var questionA = result.id;
@@ -30,6 +36,7 @@
 	  var interval = setInterval(function() {
     	   CountdownFrom = Math.floor(62 + ((start - new Date) / 1000))
 	   $('.timer').text(CountdownFrom + " seconds left...");
+	   $("#myBar").css("width","-=1.61290322581%");
 	   if (CountdownFrom == 0 || CountdownFrom < 0) {
 		clearInterval(interval)
 		$('.timer').text("Voting finished.")
@@ -69,16 +76,22 @@
   </head>
 	<body>
 	    <h1 class="question">THIS IS THE QUESTION</h1>
-
-	    <div class="timer">60 seconds left</div>
-         <div class="Section">
-	    <div class="optionA">
-		  <h1 class="headerA">Type A in chat to vote!</h1>
+ <div class="w3-round-xxlarge w3-margin">
+	 <div class="timer w3-text-black w3-center w3-padding-16">60 seconds left</div>
+  <div id="myBar" class="w3-round-xxlarge w3-blue" style="height:50px;width:100%">
+  	
+  </div>
+</div> 
+	    
+         <div class="Section w3-container">
+	  <h1 class="headerA w3-display-left">Type A in chat to vote!</h1>
+	    
+		<div class="optionA w3-container">
 	      <div class="wordA">Option A</div>
 		  <div class="resultA"></div>		
 	    </div>
-	    <div class="optionB">	
-  		  <h1 class="headerA">Type B in chat to vote!</h1>
+	    <div class="optionB w3-container">	
+  		  <h1 class="headerA w3-display-right">Type B in chat to vote!</h1>
 		  <div class="wordB">Option B</div>
 		  <div class="resultB"></div>	
 	    </div>

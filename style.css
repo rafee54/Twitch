@@ -26,7 +26,11 @@ div.optionB {
 h1.headerA {
 	animation: float 3s ease-out infinite;
 	font-size: 35px;
-	float: left;
+}
+
+h1.headerB {
+	animation: float 3s ease-out infinite;
+	font-size: 35px;
 }
 
 @keyframes float {
@@ -37,9 +41,8 @@ h1.headerA {
 }
 
 
+
 div.timer {
-	text-align: center;
-	font-size: 60px;
 }
 h1 {
 	text-align: center;
