@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
-<<<<<<< HEAD
 	<head>
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="style.css" type="text/css">
@@ -8,14 +7,12 @@
 </script>
 		<script type="text/javascript">
 var votesA;
-=======
   <head>
    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
    <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
 		var votesA;
->>>>>>> parent of e22589a... Added some timer ting
 		var votesB;
 		var winner;  
 		$(document).ready(function(){   
@@ -35,21 +32,18 @@ var votesA;
 		  $(".resultA").text(resultC.OptionA + " votes")
 		  $(".resultB").text(resultC.OptionB + " votes")
 			});
-<<<<<<< HEAD
 		  var start = new Date;
 		var CountdownFrom;
 		var interval = setInterval(function() {
 		   CountdownFrom = Math.floor(62 + ((start - new Date) / 1000))
 		$('.timer').text(CountdownFrom + " seconds left...");
 		if (CountdownFrom == 0 || CountdownFrom < 0) {
-=======
           var start = new Date;
 	  var CountdownFrom;
 	  var interval = setInterval(function() {
     	   CountdownFrom = Math.floor(62 + ((start - new Date) / 1000))
 	   $('.timer').text(CountdownFrom + " seconds left...");
 	   if (CountdownFrom == 0 || CountdownFrom < 0) {
->>>>>>> parent of e22589a... Added some timer ting
 		clearInterval(interval)
 		$('.timer').text("Voting finished.")
 		   if (votesA > votesB) {
@@ -71,14 +65,12 @@ var votesA;
 		opacity: '0.0'             
 		   });
 		   setTimeout(function(){
-<<<<<<< HEAD
 		location.reload();
 		}, 5000);
 
 
 		}   
 		 }, 1000);
-=======
 	  location.reload();
 	  }, 5000);
 		
