@@ -1,12 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
 	<head>
-		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
-		<link rel="stylesheet" href="style.css" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Muli|Philosopher" rel="stylesheet"> 
+ <link rel="stylesheet" href="w3.css"> 
+ 		<link rel="stylesheet" href="style.css" type="text/css">
 		<style type="text/css">
-html, body, h1, h2, h3, h4, h5, h6 {
-		font-family: 'Ubuntu', sans-serif;
+html, body{
+		font-family: 'Muli', sans-serif;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Philosopher', serif;
 		}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript">
@@ -89,7 +92,7 @@ html, body, h1, h2, h3, h4, h5, h6 {
 		<h2 class="Question w3-container w3-center w3-round-xxlarge w3-white" style="width:75%;margin: 0 auto;border-style: solid;">
 			This is the posed question?
 		</h2>
-		<div class="Prompts w3-cell-row" style="width:75%;margin: 0 auto;">
+		<div class="Prompts w3-cell-row w3-xxlarge" style="width:75%;margin: 0 auto;">
 			<div class="PromptA w3-container w3-cell w3-center">
 				Type A in chat to vote!
 			</div>
@@ -119,9 +122,9 @@ html, body, h1, h2, h3, h4, h5, h6 {
 			<div class="w3-round-xxlarge w3-margin w3-panel">
 				<div id="myBar" class="w3-round-xxlarge" style="background-color:white;height:50px;width:100%;border-style:solid; border-color:black;z-index: 1;"></div>
 			</div>
-			<div class="timer w3-text-black w3-center w3-xxlarge" style="z-index: 2;">
+			<h3 class="timer w3-text-black w3-center w3-xxlarge" style="z-index: 2;">
 				60 seconds left
-			</div>
+			</h3>
 		</div>
 		<h2 class="Result w3-container w3-center"></h2>
 	</body>
