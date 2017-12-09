@@ -49,20 +49,15 @@ def voting(number):
     scoreA = 0;
     scoreB = 0;
     with TwitchChatStream(username='wwyrd',oauth='oauth:v1exdo5jw9hmqrbozduymby6opyn6w',verbose=False) as chatstream:
-	chatstream.send_chat_message('Voting is open!')
+	chatstream.send_chat_message('Voting is open! Type A to vote for ', OptionOne,' or type B to vote for ', OptionTwo, '.')
 	timer = 60
 	while timer > 0:
 	    time.sleep(1)
             received = chatstream.twitch_receive_messages()
             if received:
-                for chat_message in received:
-                    print("Got a message '%s' from %s" % (
-                        chat_message['message'],
-                        chat_message['username']))
 		    if chat_message['message'].lower() == 'a': scoreA += 1;
 		    if chat_message['message'].lower() == 'b': scoreB += 1; 
 	    timer-=1;
-            print(timer)   
     result = {"OptionA":scoreA, "OptionB":scoreB}
     return jsonify(result)
 
